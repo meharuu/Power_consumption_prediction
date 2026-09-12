@@ -205,32 +205,6 @@ pip install pandas numpy scikit-learn lightgbm xgboost catboost matplotlib seabo
 Place the competition CSVs in the repository root and run `bldgs.ipynb` first for the EDA,
 then any modelling notebook.
 
-## Current state
-
-An exploratory competition repository rather than a packaged project. Known rough edges:
-
-- **The winning configuration isn't identified.** Six notebooks, one 7.50% SMAPE — the README
-  should say which produced it, and ideally that notebook should be named accordingly.
-- **Notebook names carry no information.** `new.ipynb`, `new2.ipynb`, and `try.ipynb` should
-  describe their approach.
-- **Notebook outputs are committed**, making the repository ~56 MB for ~11k lines of actual
-  code. Stripping outputs (`nbstripout`) would cut it by well over 90%.
-- **`smape()` is redefined a dozen times** within single notebooks, along with duplicated
-  feature-engineering blocks. A shared `utils.py` would remove most of the duplication.
-- **No `requirements.txt`**, and no pinned versions.
-- **Large commented-out blocks** of superseded feature code remain throughout.
-- **`fillna(method="bfill")`** is deprecated in pandas 2.x; use `.bfill()`.
-
-## Possible next steps
-
-- [ ] Identify and rename the notebook that produced 7.50% SMAPE
-- [ ] Extract shared feature engineering and the metric into `utils.py`
-- [ ] Strip notebook outputs and add `requirements.txt`
-- [ ] Train one model per building type and compare against the global model on the same folds
-- [ ] Blend the global and segmented predictions
-- [ ] Weight training samples by inverse consumption to align the loss with SMAPE
-- [ ] Add a per-building SMAPE breakdown to see which buildings carry the error
-
 ## License
 
 MIT
